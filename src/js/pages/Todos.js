@@ -6,23 +6,12 @@ import TodoStore from "../stores/TodoStore";
 
 export default class Featured extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
-      todos: TodoStore.getAll(),
+      todos: TodoStore.getAll()
     }
-    
   }
-
-  //get todos from store
-  getTodos() {
-    this.setState({
-      todos: TodoStore.getAll(),
-    });
-  }
- 
   render() {
-    console.log("state", this.state);
-
     const { todos } = this.state;
 
     const todoitems = todos.map((todoitem) => {
