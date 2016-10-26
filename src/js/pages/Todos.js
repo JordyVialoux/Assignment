@@ -50,7 +50,7 @@ export default class Featured extends React.Component {
   render() {
     const { todos } = this.state;
 
-    console.log("todos", todos);
+    console.log(todos);
 
     const todoitems = todos.map((todoitem) => {
       return <Todo key={todoitem.id} {...todoitem} />

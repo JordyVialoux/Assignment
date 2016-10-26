@@ -33,7 +33,8 @@ class TodoStore extends EventEmitter {
 
   deleteTodo(id) {
     //logic to remove item
-    console.log("Give me the id", this.todos);
+    
+    this.emit("change");
   }
 
   getAll() {
