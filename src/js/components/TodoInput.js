@@ -8,25 +8,25 @@ export default class TodoInput extends React.Component {
 		}
 	}
 
-	addNewTodo(event) {
+	handleChange(event) {
 		const text = event.target.value
 		this.setState({
 			inputText: text
 		})
 	}
 
-	submitNewTodo(event) {
+	handleSubmit(event) {
 		event.preventDefault()
 		this.props.addTodo(this.state.inputText)
 	}
 
 	render() {
 		return (
-			<form onSubmit={this.submitNewTodo.bind(this)}>
+			<form onSubmit={this.handleSubmit.bind(this)}>
 				<input 
 					type="text" 
 					placeholder="Add new item"
-					onChange={this.addNewTodo.bind(this)}
+					onChange={this.handleChange.bind(this)}
 					/>
 				<input type="submit" value="Submit" />
 			</form>	
