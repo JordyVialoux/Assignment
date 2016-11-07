@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { render } from "react-dom";
 import { Router, Route, IndexRoute, hashHistory } from "react-router";
 import { Provider } from "react-redux";
 
@@ -8,11 +8,28 @@ import Todos from "./pages/Todos";
 import Layout from "./pages/Layout";
 import Settings from "./pages/Settings";
 
-import store from "./store";
+import configureStore from './store'
+
+let initialState = {
+	todos: [
+		{
+			id: 0,
+			text: 'Initial todo',
+			completed: false
+		},
+		{
+			id: 1,
+			text: 'Wash car',
+			completed: false
+		}
+	]
+}
+
+let store = configureStore(initialState)
 
 const app = document.getElementById('app');
 
-ReactDOM.render(
+render(
 	<Provider store={store}>
 		<Router history={hashHistory}>
 			<Route path="/" component={Layout}>

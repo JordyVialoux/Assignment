@@ -1,71 +1,32 @@
 import React from "react";
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-import Todo from "../components/Todo";
-import * as TodoActions from "../actions/TodoActions";
-import TodoStore from "../stores/TodoStore";
+import TodoInput from "../components/TodoInput";
+import TodoList from "../components/TodoList"
+import * as actions from "../actions";
 
-
-export default class Featured extends React.Component {
-  constructor() {
-    super()
-    this.getTodos = this.getTodos.bind(this);
-    this.state = {
-      todos: TodoStore.getAll(),
-      value: ""
-    }
-  }
-
-  componentWillMount() {
-    TodoStore.on("change", this.getTodos);
-    console.log("count", TodoStore.listenerCount("change"));
-  }
-
-  componentWillUnmount() {
-    TodoStore.removeListener("change", this.getTodos);
-  }
-
-  getTodos() {
-    this.setState({
-      todos: TodoStore.getAll(),
-    });
-  }
-
-  createTodo() {
-    let text = this.state.value;
-    TodoActions.createTodo(text);
-  }
-
-  handleChange(e) {
-    let text = e.target.value;
-    this.setState({
-      value: text
-    });
-  }
-
-  reloadTodos() {
-    TodoActions.reloadTodos();
-  }
-
-
+class Todos extends React.Component {
   render() {
-    const { todos } = this.state;
-
-    console.log(todos);
-
-    const todoitems = todos.map((todoitem) => {
-      return <Todo key={todoitem.id} {...todoitem} />
-    });
-
     return (
       <div className="todolist-wrapper">
         <h1>To do list</h1>
-        <button onClick={this.reloadTodos.bind(this)}>Reload</button>
-        <ul>
-          {todoitems}
-        </ul>
-        <input type="text" value={this.state.value} onChange={this.handleChange.bind(this)} />
-        <button onClick={this.createTodo.bind(this)}>Create new</button>
+        <TodoList />
+        <TodoInput addTodo={this.props.actions.addTodo} />
       </div>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return state
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+}
+ 
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todos)

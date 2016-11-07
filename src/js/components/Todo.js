@@ -1,21 +1,20 @@
 import React from "react";
 
-import * as TodoActions from "../actions/TodoActions";
-
-export default class Todo extends React.Component {
-  deleteTodo() {
-    TodoActions.deleteTodo();
+export default class TodoItem extends React.Component {
+  handleDelete() {
+    this.props.actions.deleteTodo(this.props.todo.id)
   }
 
   render() {
     const { complete, text } = this.props;
 
     const icon = complete ? "\u2714" : "\u2716"
+    
     return (
       <li>
-        <span>{text}</span>
+        <span>{this.props.todo.text}</span>
         <span>{icon}</span>
-        <button onClick={this.deleteTodo.bind(this)}>Remove</button>
+        <button onClick={this.handleDelete.bind(this)}>Remove</button>
       </li>
     );
   }
