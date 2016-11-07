@@ -9,8 +9,9 @@ export default class TodoInput extends React.Component {
 	}
 
 	addNewTodo(event) {
+		const text = event.target.value
 		this.setState({
-			inputText: event.target.value
+			inputText: text
 		})
 	}
 
