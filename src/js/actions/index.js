@@ -1,13 +1,21 @@
 export function addTodo(text) {
 	return {
 		type: "ADD_TODO",
-		text: text
+		text
 	}
 }
 
 export function deleteTodo(id) {
 	return {
 		type: "DELETE_TODO",
-		payload: id
+	    id
+	}
+}
+
+export function completeTodo(id) {
+	return {
+		type: "COMPLETE_TODO",
+		id: id,
+		complete: true
 	}
 }

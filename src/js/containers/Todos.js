@@ -11,7 +11,7 @@ class Todos extends React.Component {
     return (
       <div className="todolist-wrapper">
         <h1>To do list</h1>
-        <TodoList />
+        <TodoList todos={this.props.todos} actions={this.props.actions} />
         <TodoInput addTodo={this.props.actions.addTodo} />
       </div>
     );
@@ -27,6 +27,6 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(actions, dispatch)
   }
 }
- 
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Todos)

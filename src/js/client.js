@@ -3,10 +3,10 @@ import { render } from "react-dom";
 import { Router, Route, IndexRoute, hashHistory } from "react-router";
 import { Provider } from "react-redux";
 
-import Favorites from "./pages/Favorites";
-import Todos from "./pages/Todos";
-import Layout from "./pages/Layout";
-import Settings from "./pages/Settings";
+import Favorites from "./containers/Favorites";
+import Todos from "./containers/Todos";
+import Layout from "./containers/Layout";
+import Settings from "./containers/Settings";
 
 import configureStore from './store'
 
@@ -15,11 +15,6 @@ let initialState = {
 		{
 			id: 0,
 			text: 'Initial todo',
-			completed: false
-		},
-		{
-			id: 1,
-			text: 'Wash car',
 			completed: false
 		}
 	]

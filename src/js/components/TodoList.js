@@ -1,11 +1,7 @@
 import React from "react"
 import Todo from "./Todo"
-import * as actions from "../actions";
 
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-
-class TodoList extends React.Component {
+export default class TodoList extends React.Component {
 	render() {
 		return (
 			<ul>
@@ -18,17 +14,3 @@ class TodoList extends React.Component {
 		)
 	}
 }
-
-
-function mapStateToProps(state) {
-  return state
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  }
-}
- 
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList)
