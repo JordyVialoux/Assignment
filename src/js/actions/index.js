@@ -14,8 +14,16 @@ export function deleteTodo(id) {
 
 export function completeTodo(id) {
 	return {
-		type: "COMPLETE_TODO",
-		id: id,
-		complete: true
+		type: "COMPLETE_TASK",
+		completed: true,
+		id
+	}
+}
+
+export function editTodo(text, id) {
+	return {
+		type: "EDIT_TODO",
+		text,
+		id
 	}
 }
