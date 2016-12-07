@@ -4,7 +4,6 @@ import './TodoItem.scss'
 export default class TodoItem extends React.Component {
   handleEdit() {
     this.refs.edit.focus();
-    //this.props.actions.editTodo(this.props.todo.text)
   }
 
   handleComplete() {
@@ -23,7 +22,7 @@ export default class TodoItem extends React.Component {
     return (
       <li className="todo-item">
         <span className="todo-item__text">{this.props.todo.text}<span>{icon}</span></span>
-        <input type="text" ref="edit" />
+        
         <button onClick={this.handleEdit.bind(this)}>Edit</button>
         <button onClick={this.handleComplete.bind(this)}>Completed</button>
         <button onClick={this.handleDelete.bind(this)}>Remove</button>
