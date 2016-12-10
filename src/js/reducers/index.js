@@ -23,17 +23,41 @@ export default function reducer(state, action) {
 				})
 			}
 		}
-        case "COMPLETE_TASK":
-			return {...state,
+		case "COMPLETE_TODO":
+			return {
+			    ...state,
 			    todos: state.todos.map(todo => todo.id === action.id ?
 			        // transform the one with a matching id
 			        { ...todo, completed: action.completed } : 
 			        // otherwise return original todo
 			        todo
-			    ) 
+			    )
+			    //remove completed todo from todo's window
 		}
+    	case "COMPLETE_TODO_OTHER": {
+			return {
+			    ...state,
+			    //iterate through each item
+			    todos: state.todos.map((todo) => {
+			      //transform the one with matching id	
+			      if (todo.id === action.id) {
+			        return Object.assign({}, todo, {
+			          completed: action.completed
+			        })
+			      }
+			    })
+		    }
+		}
+		case "EDIT_TODO": {
+			return {
+				...state,
+
+			}
+		}
+       
 			
 	}
 
 	return state
+    
 }

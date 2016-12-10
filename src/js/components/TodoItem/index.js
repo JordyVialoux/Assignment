@@ -3,7 +3,8 @@ import './TodoItem.scss'
 
 export default class TodoItem extends React.Component {
   handleEdit() {
-    this.refs.edit.focus();
+    //show input with current text inside
+    
   }
 
   handleComplete() {
@@ -22,10 +23,11 @@ export default class TodoItem extends React.Component {
     return (
       <li className="todo-item">
         <span className="todo-item__text">{this.props.todo.text}<span>{icon}</span></span>
-        
-        <button onClick={this.handleEdit.bind(this)}>Edit</button>
-        <button onClick={this.handleComplete.bind(this)}>Completed</button>
-        <button onClick={this.handleDelete.bind(this)}>Remove</button>
+        <div>
+          <button className="btn" onClick={this.handleEdit.bind(this)}>Edit</button>
+          <button className="btn" onClick={this.handleComplete.bind(this)}>Completed</button>
+          <button className="btn" onClick={this.handleDelete.bind(this)}>Remove</button>
+        </div>
       </li>
     );
   }

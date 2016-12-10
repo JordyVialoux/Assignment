@@ -3,6 +3,8 @@ import TodoItem from "./TodoItem"
 
 export default class TodoList extends React.Component {
 	render() {
+		const completed = this.props.todos;
+		
 		return (
 			<ul>
 				{

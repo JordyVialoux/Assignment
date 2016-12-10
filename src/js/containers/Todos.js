@@ -7,6 +7,27 @@ import TodoList from "../components/TodoList"
 import * as actions from "../actions";
 
 class Todos extends React.Component {
+  componentWillMount() {
+    //check for completed tasks
+    this.props.todos.filter((todo) => {
+      if(todo.completed == false) {
+        console.log("not completed");
+      }
+    })
+    
+  }
+
+  componentDidUpdate() {
+    //when component updated
+    //check for completed items
+    //remove complete item from list
+    this.props.todos.map((todo) => {
+      if(todo.completed == true) {
+        console.log("item complete");
+      }
+    })
+  }
+
   render() {
     return (
       <div className="todolist-wrapper">
