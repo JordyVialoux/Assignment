@@ -7,16 +7,6 @@ import TodoList from "../components/TodoList"
 import * as actions from "../actions";
 
 class Todos extends React.Component {
-  componentWillMount() {
-    //check for completed tasks
-    this.props.todos.filter((todo) => {
-      if(todo.completed == false) {
-        console.log("not completed");
-      }
-    })
-    
-  }
-
   componentDidUpdate() {
     //when component updated
     //check for completed items
