@@ -3,24 +3,11 @@ import { render } from "react-dom";
 import { Router, Route, IndexRoute, hashHistory } from "react-router";
 import { Provider } from "react-redux";
 
-import Completed from "./containers/Completed";
-import Todos from "./containers/Todos";
+import Home from "./containers/Home";
+import Users from "./containers/Users";
 import Layout from "./containers/Layout";
-import Settings from "./containers/Settings";
 
-import configureStore from './store'
-
-let initialState = {
-	todos: [
-		{
-			id: 0,
-			text: 'Initial todo',
-			completed: false
-		}
-	]
-}
-
-let store = configureStore(initialState)
+import store from './store'
 
 const app = document.getElementById('app');
 
@@ -28,9 +15,8 @@ render(
 	<Provider store={store}>
 		<Router history={hashHistory}>
 			<Route path="/" component={Layout}>
-			<IndexRoute component={Todos}></IndexRoute>
-			<Route path="completed" component={Completed}></Route>
-			<Route path="settings" component={Settings}></Route>
+				<IndexRoute component={Home}></IndexRoute>
+				<Route path="users" component={Users}></Route>
 			</Route>
 		</Router>
 	</Provider>,
